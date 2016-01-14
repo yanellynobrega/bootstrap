@@ -7,8 +7,10 @@ node_js:
   - "5"
 before_install:
   - echo $PATH
-  - which which || true
-  - ./node_modules/.bin/which curl || true
+  - builtin which which || echo REALLY_NO_WHICH
+  - which which || echo WHICH_LOST_ITSELF
+  - ./node_modules/.bin/which curl || echo NODE_NO_CURL
+  - ./node_modules/.bin/which which || echo NODE_WHICH_LOST_ITSELF
   - rvm install 2.2
   - rvm use 2.2 --fuzzy
   - export GEMDIR=$(rvm gemdir)
