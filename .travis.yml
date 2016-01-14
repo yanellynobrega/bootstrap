@@ -6,7 +6,7 @@ node_js:
   - "4"
   - "5"
 before_install:
-  - python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH"
+  - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
   - echo $PATH
   - builtin which which || echo REALLY_NO_WHICH
   - which which || echo WHICH_LOST_ITSELF
